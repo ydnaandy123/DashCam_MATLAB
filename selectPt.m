@@ -39,6 +39,8 @@ lng = 360*pd1(:,1)/nd; lat = 180*pd1(:,2)/md-90; r = cos(lat * pi / 180);
 tp1 = [r.*cos(lng * pi / 180.0), sin(lat * pi / 180.0), r .* sin(lng * pi / 180.0)].*d1*2;
 lng = 360*pd2(:,1)/nd; lat = 180*pd2(:,2)/md-90; r = cos(lat * pi / 180);
 tp2 = [r.*cos(lng * pi / 180.0), sin(lat * pi / 180.0), r .* sin(lng * pi / 180.0)].*d2*2;
+%% RANSAC fitting to find Rt
+save('3dp', 'tp1', 'tp2');
 %% Visualize
 % RGB pano
 figure;
