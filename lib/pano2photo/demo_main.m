@@ -15,19 +15,18 @@ clear
 clc
 
 % parameters
-new_imgH = 1664;                 % horizontal resolution = width
+new_imgH = 640;                 % horizontal resolution = width
 new_imgShort = new_imgH/4*3;    % vertical resolution = height
-fov = pi * 65.5 / 180;          % horizontal angle of view
+fov = pi * 100 / 180;          % horizontal angle of view
 
 % where is your center of the camera
 % horizontal angle
-x = - pi * -0.5;           % range [-pi,   pi]
+x = - pi * 0.5;           % range [-pi,   pi]
 % vertical angle
-y = 0;                    % range [-pi/2, pi/2]
+y = -pi/4;                    % range [-pi/2, pi/2]
 
 
 % read the panorama
-%panorama = imread('pano_aclzqydjlssfry.jpg');
 panorama = imread('2.png');
 panorama = double(panorama);
 
@@ -35,6 +34,8 @@ panorama = double(panorama);
 warped_image = imgLookAt(panorama, x, y, new_imgH, fov );
 warped_image = warped_image/255;
 warped_image = warped_image((new_imgH-new_imgShort)/2+(1:new_imgShort),:,:);
+
+imshow(warped_image);
 
 % warp the crop back to panorama
 % this function assume y==0. It won't work when y!=0, and you need to
